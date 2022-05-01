@@ -1,0 +1,11 @@
+# Construir imagem
+docker image build . --no-cache -t custom-caddy:2.5.0-alpine
+
+# Executar imagem com volume
+docker container run --name my-caddy-server -p 8080:80 -v $PWD/www/:/usr/src/pages/:z -d custom-caddy:2.5.0-alpine
+
+# Parar container
+docker container stop my-caddy-server
+
+# Remover container
+docker container rm my-caddy-server
